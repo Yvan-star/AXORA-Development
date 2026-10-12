@@ -1,0 +1,87 @@
+name: AXORA Agent Run
+
+on:
+  workflow_dispatch:
+    inputs:
+      agent:
+        description: "Agent to run"
+        required: true
+        type: choice
+        options:
+          - orchestrator
+          - research
+          - product
+          - coding
+          - quality
+          - operations
+          - intelligence
+      task:
+        description: "Task description"
+        required: true
+        type: string
+      sources_json:
+        description: "Optional JSON array of source notes (title, url, notes)"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: axora-agent-run-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Validate inputs and run agent
+        env:
+          AXORA_AGENT: ${{ inputs.agent }}
+          AXORA_TASK: ${{ inputs.task }}
+          AXORA_SOURCES_JSON: ${{ inputs.sources_json }}
+        run: |
+          set -euo pipefail
+          mkdir -p outputs
+          if [ -n "$AXORA_SOURCES_JSON" ]; then
+            printf '%s' "$AXORA_SOURCES_JSON" > /tmp/axora-sources.json
+            python -m json.tool /tmp/axora-sources.json >/dev/null
+            python -m agents run --agent "$AXORA_AGENT" --task "$AXORA_TASK" --sources-file /tmp/axora-sources.json --output-dir outputs
+          else
+            python -m agents run --agent "$AXORA_AGENT" --task "$AXORA_TASK" --output-dir outputs
+          fi
+
+      - name: Add task result to job summary
+        if: always()
+        env:
+          AXORA_AGENT: ${{ inputs.agent }}
+          AXORA_JOB_STATUS: ${{ job.status }}
+        run: |
+          {
+            echo "## AXORA Agent Run"
+            echo
+            echo "- Requested agent: $AXORA_AGENT"
+            echo "- Run ID: $GITHUB_RUN_ID"
+            echo "- Job status: $AXORA_JOB_STATUS"
+            echo
+            echo "Generated reports and task records are attached as an artifact when available."
+            echo "This workflow does not send messages to ChatGPT or modify external systems."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: axora-agent-output-${{ github.run_id }}
+          path: outputs/
+          if-no-files-found: warn
+          retention-days: 14
