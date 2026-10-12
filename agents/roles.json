@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+  "execution_mode": "safe_task_runner",
+  "agents": [
+    {"id":"orchestrator","name":"AXORA Orchestrator","status":"implemented","purpose":"Routes tasks using transparent keyword rules."},
+    {"id":"research","name":"AXORA Research Agent","status":"implemented","purpose":"Creates source-aware reports from supplied notes; no live browsing."},
+    {"id":"product","name":"AXORA Product Agent","status":"implemented","purpose":"Produces product briefs and validation plans."},
+    {"id":"coding","name":"AXORA Coding Agent","status":"planning_only","purpose":"Produces implementation plans; does not write or execute application code."},
+    {"id":"quality","name":"AXORA Quality Agent","status":"implemented","purpose":"Checks report completeness."},
+    {"id":"operations","name":"AXORA Operations Agent","status":"implemented","purpose":"Records task metadata and status."},
+    {"id":"intelligence","name":"AXORA Intelligence Agent","status":"implemented","purpose":"Creates a decision memo from supplied findings."}
+  ],
+  "safety": {
+    "external_writes": false,
+    "deployment": false,
+    "spending": false,
+    "publishing": false,
+    "autonomous_code_changes": false,
+    "human_approval_required_for_high_impact_actions": true
+  }
+}
