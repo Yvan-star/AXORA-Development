@@ -1,0 +1,26 @@
+name: Workspace checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  hygiene:
+    name: Repository hygiene
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Check required workspace docs
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f README.md
+          test -f docs/SECURITY.md
+          test -f projects/README.md
+          echo "Workspace structure is present."
