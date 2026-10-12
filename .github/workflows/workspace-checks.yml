@@ -10,17 +10,61 @@ permissions:
   contents: read
 
 jobs:
-  hygiene:
-    name: Repository hygiene
+  docs-and-structure:
+    name: Documentation and structure
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-      - name: Check required workspace docs
+
+      - name: Verify required workspace files
         shell: bash
         run: |
           set -euo pipefail
-          test -f README.md
-          test -f docs/SECURITY.md
-          test -f projects/README.md
-          echo "Workspace structure is present."
+          required=(
+            README.md
+            CONTRIBUTING.md
+            SECURITY.md
+            docs/ARCHITECTURE.md
+            docs/ENGINEERING_STANDARDS.md
+            docs/DEVELOPMENT_WORKFLOW.md
+            docs/PRIVACY.md
+            docs/AI_SYSTEMS.md
+            docs/TESTING_STRATEGY.md
+            docs/RELEASE_MANAGEMENT.md
+            docs/OPERATIONS.md
+            projects/README.md
+            projects/PROJECT_LIFECYCLE.md
+            templates/PROJECT_BRIEF.md
+            templates/PROJECT_README.md
+            templates/TEST_PLAN.md
+            templates/SECURITY_REVIEW.md
+          )
+          for file in "${required[@]}"; do
+            if [[ ! -f "$file" ]]; then
+              echo "::error file=$file::Required workspace file is missing."
+              exit 1
+            fi
+          done
+          echo "All required workspace files are present."
+
+      - name: Check for likely secret/config files
+        shell: bash
+        run: |
+          set -euo pipefail
+          if find . -path './.git' -prune -o -type f \( -name '.env' -o -name '.env.*' -o -name '*.pem' -o -name '*.key' \) ! -name '.env.example' -print | grep -q .; then
+            echo "::error::Potential secret/config files found. Inspect the list, remove actual secrets, and use secret storage."
+            find . -path './.git' -prune -o -type f \( -name '.env' -o -name '.env.*' -o -name '*.pem' -o -name '*.key' \) ! -name '.env.example' -print
+            exit 1
+          fi
+          echo "No common secret/config filenames detected."
+
+      - name: Check trailing whitespace in Markdown
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -RIn --include='*.md' --exclude-dir='.git' '[[:blank:]]$' .; then
+            echo "::warning::Markdown files contain trailing whitespace."
+          else
+            echo "No trailing Markdown whitespace detected."
+          fi
