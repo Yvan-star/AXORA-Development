@@ -2,23 +2,27 @@
 
 ## Scope
 
-This repository supports AXORA development. Security expectations apply to prototypes and production services; prototypes must not be represented as production-secure without a relevant review.
+This repository provides shared AXORA engineering guidance and may contain experiments. A prototype is not production-secure just because it runs.
 
 ## Reporting a vulnerability
 
-Please do not publish exploitable details, credentials, personal data, or attack instructions in a public issue. Use GitHub's private vulnerability reporting feature if it is enabled for this repository, or contact the repository owner privately through an appropriate channel. Include the affected component, impact, reproduction summary, and suggested mitigation where safe.
+Please do not disclose exploitable details, credentials, or personal data in a public issue. Use GitHub's private vulnerability reporting feature if enabled, or contact the repository owner privately through an appropriate channel. Include the affected component, impact, and a safe reproduction summary.
 
-## Required practices
+## Minimum expectations
 
-- Do not commit secrets. Use GitHub Actions Secrets or an approved secret manager.
-- Keep permissions and tokens to the minimum necessary scope.
-- Validate input, enforce authorization on the server, and avoid trusting client-side checks.
-- Use HTTPS for network traffic and secure cookie/session settings where applicable.
-- Store only data required for the product; set retention and deletion expectations.
-- Review dependencies and lockfiles; remove packages that are unused or untrusted.
-- Do not use real customer information in demos or tests unless explicitly authorized and appropriately protected.
-- Back up important data and document recovery steps before production launch.
+- Keep credentials outside version control. Use GitHub Actions Secrets or an approved secret manager.
+- Grant the least privilege necessary to users, apps, tokens, and automation.
+- Validate input and enforce access control on the server.
+- Use secure network transport and session handling where applicable.
+- Minimize data collection and define access, retention, deletion, and recovery.
+- Review dependency provenance, maintenance, and security advisories.
+- Use synthetic or anonymized data in demos and tests by default.
+- Add appropriate rate limits, cost ceilings, and abuse protections to public and AI-powered services.
 
-## Incident response
+## Exposed-secret response
 
-If a secret is exposed, revoke or rotate it immediately; deleting the file or commit alone is not enough. Assess logs and affected systems, then document remediation without reproducing the secret.
+Revoke or rotate exposed credentials immediately. Removing a file or rewriting history does not make an exposed credential safe again. Assess affected systems, review relevant logs, and document remediation without repeating the secret.
+
+## Limitations
+
+This policy does not certify that code or deployed services are secure. Product-specific risk assessment and specialist review may be necessary.
