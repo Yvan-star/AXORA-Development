@@ -1,0 +1,29 @@
+name: Feature request
+description: Propose a user-centered improvement.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Who experiences this need, and in what context?
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and assumptions
+      description: Separate known facts from assumptions.
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: What should improve, and how could success be measured?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed approach
+      description: Include alternatives, risks, and what should remain out of scope.
