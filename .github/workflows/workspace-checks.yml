@@ -48,6 +48,10 @@ jobs:
           done
           echo "All required workspace files are present."
 
+      - name: Test AXORA agent runtime
+        run: |
+          python -m unittest discover -s tests -v
+
       - name: Check for likely secret/config files
         shell: bash
         run: |
