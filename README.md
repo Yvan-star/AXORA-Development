@@ -22,6 +22,7 @@ Use this repository to organize product briefs, architecture standards, reusable
 |---|---|
 | `.github/` | Pull request/issue templates and GitHub Actions |
 | `docs/` | Architecture, engineering standards, privacy, operations, release and AI guidance |
+| `agents/` | Safe task-based AXORA agent runtime and role registry |
 | `docs/decisions/` | Architecture Decision Records |
 | `projects/` | Central project registry and portfolio planning |
 | `templates/` | Reusable project briefs, READMEs and checklists |
@@ -71,6 +72,8 @@ Before a production release, verify tests, access controls, secret configuration
 - [Security checklist](docs/SECURITY.md)
 - [Privacy principles](docs/PRIVACY.md)
 - [AI system guidelines](docs/AI_SYSTEMS.md)
+- [AXORA agent operations](docs/AXORA_AGENTS.md)
+- [Agent runtime quick start](agents/README.md)
 - [Testing strategy](docs/TESTING_STRATEGY.md)
 - [Release management](docs/RELEASE_MANAGEMENT.md)
 - [Operations and incident response](docs/OPERATIONS.md)
@@ -89,5 +92,5 @@ Before a production release, verify tests, access controls, secret configuration
 
 ## Current status
 
-This repository provides shared documentation, workflow conventions, and templates. It does not, by itself, deploy an app, provision cloud resources, connect production services, or constitute a finished AXORA product. Each capability must be implemented, configured, and verified in the relevant project.
+This repository provides shared documentation, workflow conventions, templates, and an initial safe AXORA agent task runner. The task runner currently creates structured reports without an LLM or live web browsing. It does not deploy apps, provision cloud resources, connect production services, or send messages directly to ChatGPT. See the [agent operations guide](docs/AXORA_AGENTS.md) for capabilities and limits.
 
