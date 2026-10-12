@@ -1,0 +1,45 @@
+name: Bug report
+description: Report a reproducible problem in an AXORA project or shared workspace.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Please do not include passwords, API keys, private user data, or other secrets."
+  - type: input
+    id: project
+    attributes:
+      label: Project/component
+      description: Which application, package, or document is affected?
+      placeholder: "AXORA Bridge / apps/example"
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: "1. ... 2. ... 3. ..."
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser, OS, app version, or commit if relevant.
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Safe logs or screenshots
+      description: Redact tokens, personal data, and other sensitive details.
