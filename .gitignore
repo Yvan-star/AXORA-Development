@@ -1,0 +1,46 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+credentials/
+service-account*.json
+
+# Dependencies
+node_modules/
+vendor/
+.venv/
+venv/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Build output
+dist/
+build/
+out/
+.next/
+.nuxt/
+coverage/
+*.log
+
+# Local/editor files
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+*.swo
+
+# Local databases and runtime data
+*.sqlite
+*.sqlite3
+*.db
+tmp/
+temp/
+
+# OS-generated files
+Thumbs.db
