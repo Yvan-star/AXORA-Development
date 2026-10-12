@@ -8,7 +8,7 @@ secrets/
 credentials/
 service-account*.json
 
-# Dependencies
+# Dependencies and caches
 node_modules/
 vendor/
 .venv/
@@ -27,13 +27,14 @@ out/
 coverage/
 *.log
 
-# Local/editor files
+# Local editor/OS files
 .DS_Store
 .idea/
 .vscode/*
 !.vscode/extensions.json
 *.swp
 *.swo
+Thumbs.db
 
 # Local databases and runtime data
 *.sqlite
@@ -42,5 +43,6 @@ coverage/
 tmp/
 temp/
 
-# OS-generated files
-Thumbs.db
+# Generated test/browser artifacts
+playwright-report/
+test-results/
