@@ -1,31 +1,36 @@
 # Contributing to AXORA Development
 
-Thanks for helping improve AXORA's software foundations.
+Thanks for helping improve AXORA's engineering foundation.
 
-## Before starting
+## Before you start
 
-- Check the README and current project brief.
-- Confirm the change has a clear goal and isn't duplicating existing work.
-- For substantial changes, create or update an issue before implementation.
-- Never include credentials, private customer data, or unlicensed assets.
+- Read the repository README and relevant project documentation.
+- Check open issues and project briefs so the change has a clear goal.
+- Use an issue for substantial changes or a new capability.
+- Do not commit API keys, passwords, private customer data, confidential business information, or assets without appropriate rights.
 
 ## Workflow
 
-1. Create a branch from the default branch using `feat/`, `fix/`, `docs/`, or `chore/`.
-2. Keep changes focused and commit with a conventional prefix (`feat:`, `fix:`, `docs:`, `test:`, `refactor:`, `chore:`).
-3. Add or update tests and documentation where relevant.
-4. Run all checks appropriate to the affected project.
-5. Open a pull request using the template; explain what changed, why, test evidence, risks, and any configuration or migration steps.
-6. Address review feedback and ensure required checks pass before merging.
+1. Create a focused branch from `main`: `feat/...`, `fix/...`, `docs/...`, or `chore/...`.
+2. Make small, reviewable changes and use conventional commit prefixes.
+3. Update relevant docs and tests with the implementation.
+4. Run appropriate checks and report exactly what was and was not run.
+5. Open a pull request using the repository template.
+6. Address issues and verify checks before merging.
 
 ## Definition of done
 
-- The change addresses the stated problem.
-- Existing functionality is not knowingly broken.
-- Tests/checks run and their results are described accurately.
-- Setup, configuration, user-facing behavior, and security implications are documented.
-- No secrets or unnecessary personal data are committed.
+- The change meets stated acceptance criteria.
+- It does not knowingly break existing behavior or documentation.
+- Tests/checks and their actual results are described.
+- Security, privacy, accessibility, cost, and maintenance effects are considered.
+- Setup and operational instructions are updated where relevant.
+- No secrets or unnecessary personal data are included.
 
-## AI-assisted contributions
+## AI-assisted work
 
-AI-generated code must be reviewed by a human before merging. Verify security-sensitive behavior, licenses, dependency provenance, edge cases, and test claims. Do not paste secrets or confidential user data into external AI services.
+AI-assisted contributions are welcome but are not self-verifying. Review code, licenses, dependency provenance, authentication/authorization, error paths, edge cases, and test claims. Do not submit confidential source or private data to tools that are not approved to handle it.
+
+## Documentation changes
+
+Prefer actionable instructions, mark assumptions, include links to authoritative project resources, and state limitations. Avoid documenting proposed behavior as if it already exists.
