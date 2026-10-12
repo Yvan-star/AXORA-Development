@@ -46,3 +46,6 @@ temp/
 # Generated test/browser artifacts
 playwright-report/
 test-results/
+
+# Generated AXORA agent deliverables (download from Actions artifacts when needed)
+outputs/
