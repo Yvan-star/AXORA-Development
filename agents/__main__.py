@@ -209,7 +209,7 @@ def quality_check(task: str, report: str) -> dict[str, Any]:
         "has_generated_timestamp": "Generated (UTC):" in report,
         "has_limitations": any(word in report.lower() for word in (
             "not independently verified", "not market-validated", "planning output only",
-            "no independent verification", "did not browse"
+            "no independent verification", "did not browse", "no external systems were changed"
         )),
     }
     return {"passed": all(checks.values()), "checks": checks}
