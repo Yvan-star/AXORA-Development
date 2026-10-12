@@ -64,18 +64,30 @@ Before a production release, verify tests, access controls, secret configuration
 ## Core guides
 
 - [Architecture](docs/ARCHITECTURE.md)
+- [Project structure](docs/PROJECT_STRUCTURE.md)
 - [Engineering standards](docs/ENGINEERING_STANDARDS.md)
 - [Development workflow](docs/DEVELOPMENT_WORKFLOW.md)
 - [Security policy](SECURITY.md)
-- [Project security checklist](docs/SECURITY.md)
+- [Security checklist](docs/SECURITY.md)
 - [Privacy principles](docs/PRIVACY.md)
 - [AI system guidelines](docs/AI_SYSTEMS.md)
 - [Testing strategy](docs/TESTING_STRATEGY.md)
 - [Release management](docs/RELEASE_MANAGEMENT.md)
 - [Operations and incident response](docs/OPERATIONS.md)
+- [Dependency policy](docs/DEPENDENCY_POLICY.md)
+- [Accessibility](docs/ACCESSIBILITY.md)
+- [Environment configuration](docs/ENVIRONMENT_CONFIGURATION.md)
+- [Cost/resource controls](docs/COST_AND_RESOURCE_CONTROLS.md)
 - [Project registry](projects/README.md)
+- [Project lifecycle](projects/PROJECT_LIFECYCLE.md)
+- [Product requirements template](templates/PRODUCT_REQUIREMENTS.md)
 - [Project brief template](templates/PROJECT_BRIEF.md)
+- [Project README template](templates/PROJECT_README.md)
+- [Test plan template](templates/TEST_PLAN.md)
+- [Security review template](templates/SECURITY_REVIEW.md)
+- [ADR template](templates/ADR_TEMPLATE.md)
 
 ## Current status
 
-This repository provides documentation, workflow conventions, and templates. It does not, by itself, deploy an app, provision cloud resources, connect production services, or constitute a finished AXORA product. Each such capability must be implemented, configured, and verified for the specific project.
+This repository provides shared documentation, workflow conventions, and templates. It does not, by itself, deploy an app, provision cloud resources, connect production services, or constitute a finished AXORA product. Each capability must be implemented, configured, and verified in the relevant project.
+
