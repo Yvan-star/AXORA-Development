@@ -57,3 +57,16 @@ Publishing is not enabled automatically by this prototype commit. The URL will w
 - The Google Fonts connection is optional; system fallbacks are included.
 - Contact form is not connected to a backend; the CTA uses a mailto link.
 - No analytics, cookies, external form service, or data collection are added.
+
+
+## Stability checks
+
+The site has a dependency-free regression test suite at `tests/site.test.cjs`. Run it from the repository root with Node.js 20 or newer:
+
+```sh
+node --test projects/ym-visuals-website/tests/site.test.cjs
+```
+
+A GitHub Actions workflow at `.github/workflows/ym-visuals-site-checks.yml` runs these checks on relevant pushes, pull requests, and manual dispatch. It checks document structure, section anchors/IDs, responsive breakpoints, accessible interaction state, local asset references, and intentional contact/portfolio placeholders.
+
+These are static checks, not a substitute for cross-browser visual testing or a full accessibility audit. The contact CTA is a mailto link (not a backend form), and its placeholder email must be replaced before launch.
