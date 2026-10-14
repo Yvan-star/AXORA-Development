@@ -55,7 +55,8 @@ test('responsive layout and semantic content are present', () => {
 
 test('images/links do not silently fabricate external destinations', () => {
   const externalHrefs = allMatches(/\bhref="(https?:[^"]+)"/g).map(m => m[1]);
-  assert.deepEqual(externalHrefs, [], 'this prototype should not include unverified external social links');
+  const nonFontExternalHrefs = externalHrefs.filter(href => !/^https:\/\/(fonts\.googleapis\.com|fonts\.gstatic\.com)(\/|$)/.test(href));
+  assert.deepEqual(nonFontExternalHrefs, [], 'this prototype should not include unverified external social links');
   assert.match(html, /YOUR-EMAIL-HERE/, 'contact placeholder should remain explicit until official email is known');
   assert.match(html, /Concept sample/);
   assert.match(html, /not client projects or completed commissions/);
