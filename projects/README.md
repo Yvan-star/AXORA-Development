@@ -5,6 +5,7 @@ Use this file to keep track of software initiatives. Update it when a project is
 | Project | Repository/path | Stage | Owner | Next milestone |
 |---|---|---|---|---|
 | AXORA Development Workspace | This repository | Foundation | Yvan-star | Select and register the first product |
+| YM Visuals Facebook Page Concept | [apps/ym-visuals-facebook-prototype](../apps/ym-visuals-facebook-prototype/) | Prototype | Yvan-star | Review the concept, replace placeholder artwork, and enable a public preview if desired |
 
 ## Stages
 
