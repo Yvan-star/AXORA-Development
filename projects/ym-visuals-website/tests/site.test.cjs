@@ -23,8 +23,9 @@ test('entry page exists and has a complete document skeleton', () => {
 });
 
 test('all primary navigation and section anchors resolve', () => {
-  const ids = new Set(allMatches(/\bid="([^"]+)"/g).map(m => m[1]));
-  const duplicates = [...ids].filter(id => allMatches(new RegExp('\\bid="' + id.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&') + '"', 'g')).length > 1);
+  const idList = allMatches(/\bid="([^"]+)"/g).map(m => m[1]);
+  const ids = new Set(idList);
+  const duplicates = [...new Set(idList.filter((id, index) => idList.indexOf(id) !== index))];
   assert.deepEqual(duplicates, [], 'IDs should be unique');
   const hrefs = allMatches(/\bhref="#([^"]+)"/g).map(m => m[1]);
   const missing = [...new Set(hrefs.filter(id => !ids.has(id)))];
